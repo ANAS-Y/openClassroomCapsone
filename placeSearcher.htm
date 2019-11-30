@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-type" content="text/html" />
+    <meta name="description" content="Geo-Search Application as Openclassrom Capstone Project 2019" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css"/>
+  <title>Geo-Search Home</title>
+  
+  <script>
+  //city = document.getElementById('city-input').value;
+  
+    var httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET', 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyAWcRqypPgcMiWS2BMB39SF22iaik7g6Fs');
+  httpRequest.onreadystatechange = function () {
+    if (httpRequest.status === 4) {
+      const response = JSON.parse(httpRequest.response);
+     
+  document.getElementById('wetherDisplayer').innerHTML = 'The  place in ' + response.name;
+      console.log(httpRequest.responseText);
+    }
+    else{
+document.getElementById('wetherDisplayer').innerHTML = "This place was not found";
+    }
+  };
+
+  function sendRequest() {
+    httpRequest.send();
+    document.getElementById('searchBtn').style.display = 'none';
+   
+  }
+  </script>
+
+</head>
+<body>
+    
+    <!-- header start here-->
+<div class="header">
+
+<h2 class="header-text">Geo-Search </h2>
+</div>
+
+<!-- Navigation bar start here-->
+<nav>
+<ul>
+  <li><a href="index.html">Home</a></li>
+    <li><a href="#">MAP Locator<a></li>
+</ul>
+</nav>
+
+<!-- Body Content start here-->
+<div class="content">
+
+<!-- First column start here-->
+<div class="form-div">
+	
+<input type="text" placeholder="Search for Your City" name="city" class="search" id="city-input">
+    <button id="searchBtn" onclick="sendRequest()" class="search-btn">Search</button>
+    </div>
+    <div id="wetherDisplayer">
+    <div class="title">
+      <h1 class="displayerHeader">City Whether Condition of the Day</h1>
+    </div>
+    </p>
+    </div>
+    </div>
+    <!--footer start here-->
+<footer>
+<div class="inner">
+					<ul class="footer-list">
+						<li>&copy; 2019 All rights reserved.</li>
+                        <li>Power By Openclassrom</li>
+					</ul>
+				</div>
+</footer >
+</body>
+</html>

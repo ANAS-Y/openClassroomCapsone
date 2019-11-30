@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-type" content="text/html" />
+    <meta name="description" content="Geo-Search Application as Openclassrom Capstone Project 2019" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css"/>
+  <title>Geo-Search Home</title>
+  
+  <script>
+  city = "New York";//document.getElementById('city-input').value;
+  
+    var httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET', 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=b34fddd3dae4a2eb0ad363b62f98ba1e');
+  httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState === 4) {
+      const response = JSON.parse(httpRequest.response);
+     
+  document.getElementById('wetherDisplayer').innerHTML = 'The weather in ' + response.name + ' is ' + 
+  response.weather[0].main + ' <br> The Temprature is  ' + response.main.temp + '<br> The Humidity in ' + response.name + ' is ' + 
+  response.main.humidity + ' <br> The wind speed of ' + response.name + ' is ' + + response.wind.speed ;
+  ;
+ 
+  
+      console.log(httpRequest.responseText);
+    }
+    else{
+document.getElementById('wetherDisplayer').innerHTML = "This city was not found";
+    }
+  };
+
+  function sendRequest() {
+    httpRequest.send();
+    document.getElementById('searchBtn').style.display = 'none';
+   
+  }
+  </script>
+
+</head>
+<body>
+    
+    <!-- header start here-->
+<div class="header">
+
+<h2 class="header-text">Geo-Search </h2>
+</div>
+
+<!-- Navigation bar start here-->
+<nav>
+<ul>
+  <li><a href="index.html">Home</a></li>
+    <li><a href="maplocation.html">MAP Locator<a></li>
+    <li><a href="placeSearcher.htm">Place Searcher<a></li>
+</ul>
+</nav>
+
+<!-- Body Content start here-->
+<div class="content">
+
+<!-- First column start here-->
+<div class="form-div">
+	
+<input type="text" placeholder="Search for Your City" name="city" class="search" id="city-input">
+    <button id="searchBtn" onclick="sendRequest()" class="search-btn">Search</button>
+    </div>
+    <div id="wetherDisplayer">
+    <div class="title">
+      <h1 class="displayerHeader">City Whether Condition of the Day</h1>
+      <h1 class="displayerHeader2"></h1>
+    </div>
+    </p>
+    </div>
+    </div>
+    <!--footer start here-->
+<footer>
+<div class="inner">
+					<ul class="footer-list">
+						<li>&copy; 2019 All rights reserved.</li>
+                        <li>Power By Openclassrom</li>
+					</ul>
+				</div>
+</footer >
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "geosearch",
+  "version": "1.0.0",
+  "description": "Application to Search for Location and wether condition including maps of the Location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ANAS-Y/openClassroomCapsone.git"
+  },
+  "author": "Anas Yunusa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ANAS-Y/openClassroomCapsone/issues"
+  },
+  "homepage": "https://github.com/ANAS-Y/openClassroomCapsone#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cities": "^2.0.0",
+    "express": "^4.17.1",
+    "node-static": "^0.7.11",
+    "nodemon": "^2.0.1"
+  }
+}
